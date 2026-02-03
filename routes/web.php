@@ -78,4 +78,16 @@ Route::get('inventory', function(){
 Route::get('grievances', function(){
     return view('grievances');
 })->name('grievances');
+
+Route::get('manage-users', function(){
+    return view('manage-users');
+})->name('manage-users');
+
+Route::get('bank-details', function(){
+    return view('bank-details');
+})->name('bank-details');
+
+Route::get('profile-page', function(){
+    return view('profile-page');
+})->name('profile-page');
     

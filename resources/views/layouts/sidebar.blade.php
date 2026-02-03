@@ -116,7 +116,7 @@
         </a>
         <div class="collapse" id="instruments">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="" Instruments List </a></li>
+            <li class="nav-item"> <a class="nav-link" href="" Instruments List </a> </li>
             
            
           </ul>
@@ -125,7 +125,7 @@
 
 
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+        <a class="nav-link" data-bs-toggle="collapse" href="{{ route('manage-users') }}" aria-expanded="false" aria-controls="auth">
           <span class="icon-bg"><i class="mdi mdi-account-group menu-icon"></i></span>
           <span class="menu-title">Manage Users</span>
           <i class="menu-arrow"></i>
@@ -139,7 +139,7 @@
         </div>
       </li>
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#hrm" aria-expanded="false" aria-controls="hrm">
           <span class="icon-bg"><i class="mdi mdi-account-multiple menu-icon"></i></span>
           <span class="menu-title">Team Access</span>
@@ -152,10 +152,10 @@
            
           </ul>
         </div>
-      </li>
+      </li> -->
 
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#banks" aria-expanded="false" aria-controls="banks">
+        <a class="nav-link" data-bs-toggle="collapse" href="{{ route('bank-details') }}" aria-expanded="false" aria-controls="banks">
           <span class="icon-bg"><i class="mdi mdi-bank menu-icon"></i></span>
           <span class="menu-title">Bank Details</span>
           <i class="menu-arrow"></i>
@@ -170,7 +170,7 @@
         </div>
       </li>
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#finance" aria-expanded="false" aria-controls="finance">
           <span class="icon-bg"><i class="mdi mdi-finance menu-icon"></i></span>
           <span class="menu-title">Finance</span>
@@ -183,8 +183,8 @@
            
           </ul>
         </div>
-      </li>
-      <li class="nav-item">
+      </li> -->
+      <!-- <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#settings" aria-expanded="false" aria-controls="settings">
           <span class="icon-bg"><i class="mdi mdi-cogs menu-icon"></i></span>
           <span class="menu-title">Settings</span>
@@ -201,6 +201,6 @@
             <li class="nav-item"> <a class="nav-link" href=""> Currency  [ CTRL + i ]</a></li>
           </ul>
         </div>
-      </li>""
+      </li>"" -->
     </ul>
   </nav>

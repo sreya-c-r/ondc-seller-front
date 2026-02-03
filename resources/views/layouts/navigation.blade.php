@@ -21,7 +21,7 @@
         </div>
         <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('profile-page') }}">
                     <div class="nav-profile-img">
                         <img src="assets/images/faces/face28.png" alt="image" style="width: 35px; height: 35px; border-radius: 50%;">
                     </div>
