@@ -45,7 +45,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#production" aria-expanded="false" aria-controls="production">
+        <a class="nav-link" data-bs-toggle="collapse" href="{{ route('shipments') }}" aria-expanded="false" aria-controls="production">
           <span class="icon-bg"><i class="mdi mdi-hammer menu-icon"></i></span>
           <span class="menu-title">Shipments</span>
           <i class="menu-arrow"></i>
@@ -61,7 +61,7 @@
 
 
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#sales" aria-expanded="false" aria-controls="sales">
+        <a class="nav-link" data-bs-toggle="collapse" href="{{ route('settlements') }}" aria-expanded="false" aria-controls="sales">
           <span class="icon-bg"><i class="mdi mdi-sale menu-icon"></i></span>
           <span class="menu-title">Settlements</span>
           <i class="menu-arrow"></i>
@@ -76,7 +76,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#inventory" aria-expanded="false" aria-controls="inventory">
+        <a class="nav-link" data-bs-toggle="collapse" href="{{ route('products') }}" aria-expanded="false" aria-controls="inventory">
           <span class="icon-bg"><i class="mdi mdi-domain menu-icon"></i></span>
           <span class="menu-title">Products (Catalog)</span>
           <i class="menu-arrow"></i>
@@ -91,7 +91,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#material" aria-expanded="false" aria-controls="material">
+        <a class="nav-link" data-bs-toggle="collapse" href="{{ route('inventory') }}" aria-expanded="false" aria-controls="material">
           <span class="icon-bg"><i class="mdi mdi-sprout menu-icon"></i></span>
           <span class="menu-title">Inventory</span>
           <i class="menu-arrow"></i>
@@ -109,7 +109,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#instruments" aria-expanded="false" aria-controls="instruments">
+        <a class="nav-link" data-bs-toggle="collapse" href="{{ route('grievances') }}" aria-expanded="false" aria-controls="instruments">
           <span class="icon-bg"><i class="mdi mdi-content-cut menu-icon"></i></span>
           <span class="menu-title">Grievances</span>
           <i class="menu-arrow"></i>
