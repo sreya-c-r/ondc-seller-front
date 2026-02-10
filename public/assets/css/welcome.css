@@ -1,0 +1,286 @@
+/* Base Styles */
+:root {
+    --primary-color: #2563eb;
+    /* blue-600 */
+    --primary-hover: #1d4ed8;
+    /* blue-700 */
+    --primary-light: #3b82f6;
+    /* blue-500 */
+    --bg-light: #f8fafc;
+    /* slate-50 */
+    --text-main: #374151;
+    /* gray-700 */
+    --text-dark: #1f2937;
+    /* gray-800 */
+    --text-darker: #111827;
+    /* gray-900 */
+    --text-muted: #4b5563;
+    /* gray-600 */
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-800: #1e40af;
+    --green-500: #22c55e;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation */
+.navbar {
+    background-color: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    top: 0;
+    height: 4rem;
+}
+
+.container {
+    max-width: 80rem;
+    /* 7xl */
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 100%;
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    text-decoration: none;
+    cursor: default;
+}
+
+.brand-icon {
+    color: var(--primary-light);
+    font-size: 1.5rem;
+}
+
+.brand-text {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    letter-spacing: -0.025em;
+}
+
+.brand-highlight {
+    color: var(--primary-light);
+}
+
+.nav-links {
+    display: none;
+    align-items: center;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .nav-links {
+        display: flex;
+    }
+}
+
+.nav-link {
+    color: var(--text-muted);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--primary-light);
+}
+
+.btn-start {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.btn-start:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Hero Section */
+.hero-section {
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+    background: linear-gradient(to bottom, var(--blue-50), white);
+}
+
+@media (min-width: 768px) {
+    .hero-section {
+        padding-top: 8rem;
+        padding-bottom: 5rem;
+    }
+}
+
+.hero-content {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .hero-content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Left Column */
+.tag-badge {
+    background-color: var(--blue-100);
+    color: var(--blue-800);
+    font-size: 0.75rem;
+    /* xs */
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    display: inline-block;
+}
+
+.hero-heading {
+    margin-top: 1rem;
+    font-size: 2.25rem;
+    /* 4xl */
+    font-weight: 700;
+    color: var(--text-darker);
+    line-height: 1.25;
+}
+
+@media (min-width: 768px) {
+    .hero-heading {
+        font-size: 3rem;
+        /* 5xl */
+    }
+}
+
+.text-blue {
+    color: var(--primary-color);
+}
+
+.hero-description {
+    margin-top: 1rem;
+    font-size: 1.125rem;
+    /* lg */
+    color: var(--text-muted);
+}
+
+.features-list {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.feature-check {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.check-icon {
+    color: var(--green-500);
+}
+
+/* Right Column (How it works) */
+.how-it-works-col {
+    padding-left: 0;
+}
+
+@media (min-width: 768px) {
+    .how-it-works-col {
+        padding-left: 3rem;
+    }
+}
+
+.section-heading {
+    font-size: 1.5rem;
+    /* 2xl */
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+}
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.step-card {
+    display: flex;
+    gap: 1rem;
+}
+
+.step-icon-wrapper {
+    width: 3rem;
+    /* 12 */
+    height: 3rem;
+    /* 12 */
+    background-color: var(--blue-100);
+    color: var(--primary-color);
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    /* lg */
+}
+
+.step-text {
+    flex: 1;
+}
+
+.step-title {
+    font-size: 1.125rem;
+    /* lg */
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    margin-top: 0;
+}
+
+.step-desc {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    /* sm */
+    margin: 0;
+}

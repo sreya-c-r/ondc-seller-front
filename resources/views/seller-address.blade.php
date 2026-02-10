@@ -40,10 +40,10 @@
                     <i class="fa-solid fa-shop text-blue-500 text-2xl"></i>
                     <span class="font-bold text-xl text-gray-800 tracking-tight">Seller<span class="text-blue-500">Hub</span></span>
                 </div>
-                <div class="flex items-center gap-2 text-sm font-medium text-gray-500">
+                <!-- <div class="flex items-center gap-2 text-sm font-medium text-gray-500">
                     <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">Step 2 of 3</span>
                     <span>Business Details</span>
-                </div>
+                </div> -->
             </div>
         </div>
     </nav>
@@ -161,9 +161,9 @@
                 </div>
 
                 <div class="flex justify-end pt-6 border-t border-gray-100">
-                    <button type="submit" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                    <a href="{{ route('plans') }}" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center gap-2">
                         Continue to Plans <i class="fa-solid fa-arrow-right"></i>
-                    </button>
+                    </a>
                 </div>
 
             </form>

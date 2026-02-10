@@ -1,176 +1,204 @@
-<nav class="sidebar sidebar-offcanvas" id="sidebar" >
-    <ul class="nav">
-      <li class="nav-item nav-category">Masters</li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('dashboard') }}">
-          <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-          <span class="menu-title">Dashboard</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link data-bs-toggle="collapse href="{{route('orders') }}" aria-expanded="false" aria-controls="rfq">
-          <span class="icon-bg"><i class="mdi mdi-file-document-outline menu-icon"></i></span>
-          <span class="menu-title">Orders</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse " id="rfq">
-          <ul class="nav flex-column sub-menu">
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <style>
+    .nav-item.active>.nav-link {
+      background-color: #eff6ff !important;
+      /* blue-50 */
+      border-right: 3px solid #3b82f6;
+    }
 
-            <li class="nav-item"> RFQad</li>
-            <li class="nav-item"> JABA</li>
-            <li class="nav-item">hwllo</li>
-            <li class="nav-item"> How are </li>
+    .nav-item.active>.nav-link .menu-title {
+      color: #2563eb !important;
+      /* blue-600 */
+      font-weight: 700;
+    }
 
-          </ul>
-        </div>
-      </li>
+    .nav-item.active>.nav-link i.menu-icon {
+      color: #2563eb !important;
+      /* blue-600 */
+    }
+  </style>
+  <ul class="nav">
+    <li class="nav-item nav-category">Masters</li>
+    <li class="nav-item {{ Route::is('dashboard') ? 'active' : '' }}">
+      <a class="nav-link" href="{{ route('dashboard') }}">
+        <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+        <span class="menu-title">Dashboard</span>
+      </a>
+    </li>
+    <li class="nav-item {{ Route::is('orders') ? 'active' : '' }}">
+      <a class="nav-link" data-bs-toggle="collapse" href="{{ route('orders') }}" aria-expanded="false"
+        aria-controls="rfq">
+        <span class="icon-bg"><i class="mdi mdi-file-document-outline menu-icon"></i></span>
+        <span class="menu-title">Orders</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse " id="rfq">
+        <ul class="nav flex-column sub-menu">
 
+          <li class="nav-item"> RFQad</li>
+          <li class="nav-item"> JABA</li>
+          <li class="nav-item">hwllo</li>
+          <li class="nav-item"> How are </li>
 
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="{{ route('returns') }}" aria-expanded="false" aria-controls="orders">
-          <span class="icon-bg"><i class="mdi mdi-shopping menu-icon"></i></span>
-          <span class="menu-title"> Returns & RTO</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="orders">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route('orders') }}">Order List</a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html">Order Revisions</a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html">Order Confirmation</a></li>
-    
-            
-           
-          </ul>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="{{ route('shipments') }}" aria-expanded="false" aria-controls="production">
-          <span class="icon-bg"><i class="mdi mdi-hammer menu-icon"></i></span>
-          <span class="menu-title">Shipments</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="production">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Production List </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Users </a></li>
-           
-          </ul>
-        </div>
-      </li>
+        </ul>
+      </div>
+    </li>
 
 
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="{{ route('settlements') }}" aria-expanded="false" aria-controls="sales">
-          <span class="icon-bg"><i class="mdi mdi-sale menu-icon"></i></span>
-          <span class="menu-title">Settlements</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="sales">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Production List </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Users </a></li>
-           
-          </ul>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="{{ route('products') }}" aria-expanded="false" aria-controls="inventory">
-          <span class="icon-bg"><i class="mdi mdi-domain menu-icon"></i></span>
-          <span class="menu-title">Products (Catalog)</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="inventory">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Item Master </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Users </a></li>
-           
-          </ul>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="{{ route('inventory') }}" aria-expanded="false" aria-controls="material">
-          <span class="icon-bg"><i class="mdi mdi-sprout menu-icon"></i></span>
-          <span class="menu-title">Inventory</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="material">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Item Master  </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html">Material Units </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Material Brands  </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Material Vendors  </a></li>
-            
-           
-          </ul>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="{{ route('grievances') }}" aria-expanded="false" aria-controls="instruments">
-          <span class="icon-bg"><i class="mdi mdi-content-cut menu-icon"></i></span>
-          <span class="menu-title">Grievances</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="instruments">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="" Instruments List </a> </li>
-            
-           
-          </ul>
-        </div>
-      </li>
+    <li class="nav-item {{ Route::is('returns') ? 'active' : '' }}">
+      <a class="nav-link" data-bs-toggle="collapse" href="{{ route('returns') }}" aria-expanded="false"
+        aria-controls="orders">
+        <span class="icon-bg"><i class="mdi mdi-shopping menu-icon"></i></span>
+        <span class="menu-title"> Returns & RTO</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="orders">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{{route('orders') }}">Order List</a></li>
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html">Order Revisions</a></li>
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html">Order Confirmation</a></li>
 
 
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="{{ route('manage-users') }}" aria-expanded="false" aria-controls="auth">
-          <span class="icon-bg"><i class="mdi mdi-account-group menu-icon"></i></span>
-          <span class="menu-title">Manage Users</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="auth">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Admins </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Users </a></li>
-           
-          </ul>
-        </div>
-      </li>
 
-      <!-- <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#hrm" aria-expanded="false" aria-controls="hrm">
-          <span class="icon-bg"><i class="mdi mdi-account-multiple menu-icon"></i></span>
-          <span class="menu-title">Team Access</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="hrm">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href=""> Employees </a></li>
-            <li class="nav-item"> <a class="nav-link" href=""> Department </a></li>
-           
-          </ul>
-        </div>
-      </li> -->
+        </ul>
+      </div>
+    </li>
 
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="{{ route('bank-details') }}" aria-expanded="false" aria-controls="banks">
-          <span class="icon-bg"><i class="mdi mdi-bank menu-icon"></i></span>
-          <span class="menu-title">Bank Details</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="banks">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href=""> Accounts </a></li>
-            <li class="nav-item"> <a class="nav-link" href=""> Account type </a></li>
-            <li class="nav-item"> <a class="nav-link" href="p"> Users </a></li>
-           
-          </ul>
-        </div>
-      </li>
+    <li class="nav-item {{ Route::is('shipments') ? 'active' : '' }}">
+      <a class="nav-link" data-bs-toggle="collapse" href="{{ route('shipments') }}" aria-expanded="false"
+        aria-controls="production">
+        <span class="icon-bg"><i class="mdi mdi-hammer menu-icon"></i></span>
+        <span class="menu-title">Shipments</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="production">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Production List </a></li>
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Users </a></li>
 
-      <!-- <li class="nav-item">
+        </ul>
+      </div>
+    </li>
+
+
+    <li class="nav-item {{ Route::is('settlements') ? 'active' : '' }}">
+      <a class="nav-link" data-bs-toggle="collapse" href="{{ route('settlements') }}" aria-expanded="false"
+        aria-controls="sales">
+        <span class="icon-bg"><i class="mdi mdi-sale menu-icon"></i></span>
+        <span class="menu-title">Settlements</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="sales">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Production List </a></li>
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Users </a></li>
+
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item {{ Route::is('products') ? 'active' : '' }}">
+      <a class="nav-link" data-bs-toggle="collapse" href="{{ route('products') }}" aria-expanded="false"
+        aria-controls="inventory">
+        <span class="icon-bg"><i class="mdi mdi-domain menu-icon"></i></span>
+        <span class="menu-title">Products (Catalog)</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="inventory">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Item Master </a></li>
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Users </a></li>
+
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item {{ Route::is('inventory') ? 'active' : '' }}">
+      <a class="nav-link" data-bs-toggle="collapse" href="{{ route('inventory') }}" aria-expanded="false"
+        aria-controls="material">
+        <span class="icon-bg"><i class="mdi mdi-sprout menu-icon"></i></span>
+        <span class="menu-title">Inventory</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="material">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Item Master </a></li>
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html">Material Units </a></li>
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Material Brands </a></li>
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Material Vendors </a></li>
+
+
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item {{ Route::is('grievances') ? 'active' : '' }}">
+      <a class="nav-link" data-bs-toggle="collapse" href="{{ route('grievances') }}" aria-expanded="false"
+        aria-controls="instruments">
+        <span class="icon-bg"><i class="mdi mdi-content-cut menu-icon"></i></span>
+        <span class="menu-title">Grievances</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="instruments">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="" Instruments List </a> </li>
+
+
+        </ul>
+      </div>
+    </li>
+
+
+    <li class="nav-item {{ Route::is('manage-users') ? 'active' : '' }}">
+      <a class="nav-link" data-bs-toggle="collapse" href="{{ route('manage-users') }}" aria-expanded="false"
+        aria-controls="auth">
+        <span class="icon-bg"><i class="mdi mdi-account-group menu-icon"></i></span>
+        <span class="menu-title">Manage Users</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="auth">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Admins </a></li>
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Users </a></li>
+
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item {{ Route::is('my-plan') ? 'active' : '' }}">
+      <a class="nav-link" data-bs-toggle="collapse" href="{{ route('my-plan') }}" aria-expanded="false"
+        aria-controls="hrm">
+        <span class="icon-bg"><i class="mdi mdi-account-multiple menu-icon"></i></span>
+        <span class="menu-title">Plan Details</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="hrm">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href=""> Employees </a></li>
+          <li class="nav-item"> <a class="nav-link" href=""> Department </a></li>
+
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item {{ Route::is('bank-details') ? 'active' : '' }}">
+      <a class="nav-link" data-bs-toggle="collapse" href="{{ route('bank-details') }}" aria-expanded="false"
+        aria-controls="banks">
+        <span class="icon-bg"><i class="mdi mdi-bank menu-icon"></i></span>
+        <span class="menu-title">Bank Details</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="banks">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href=""> Accounts </a></li>
+          <li class="nav-item"> <a class="nav-link" href=""> Account type </a></li>
+          <li class="nav-item"> <a class="nav-link" href="p"> Users </a></li>
+
+        </ul>
+      </div>
+    </li>
+
+    <!-- <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#finance" aria-expanded="false" aria-controls="finance">
           <span class="icon-bg"><i class="mdi mdi-finance menu-icon"></i></span>
           <span class="menu-title">Finance</span>
@@ -184,7 +212,7 @@
           </ul>
         </div>
       </li> -->
-      <!-- <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#settings" aria-expanded="false" aria-controls="settings">
           <span class="icon-bg"><i class="mdi mdi-cogs menu-icon"></i></span>
           <span class="menu-title">Settings</span>
@@ -202,5 +230,5 @@
           </ul>
         </div>
       </li>"" -->
-    </ul>
-  </nav>
+  </ul>
+</nav>

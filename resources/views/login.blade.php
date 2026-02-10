@@ -40,7 +40,7 @@
         <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 max-w-md w-full">
             <h2 class="text-2xl font-bold text-gray-800 mb-6">Login to Dashboard</h2>
 
-            <form action="{{ route('login.submit') }}" method="POST">
+            <form action="{{ route('login.post') }}" method="POST">
                 <div class="mb-4">
                     @csrf
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
@@ -48,7 +48,7 @@
                     </label>
                     <input
                         class="shadow-sm appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        id="email" type="text" placeholder="seller@example.com">
+                        id="email" name="email"  type="text" placeholder="seller@example.com">
                 </div>
 
                 <div class="mb-6">
@@ -57,7 +57,7 @@
                     </label>
                     <input
                         class="shadow-sm appearance-none border rounded w-full py-3 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        id="password" type="password" placeholder="******************">
+                        id="password" name="password" type="password" placeholder="******************">
                     <div class="flex justify-end">
                         <a href="{{route('forgot-pw')}}"
                             class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
@@ -68,7 +68,7 @@
 
                 <button type="submit"
                     class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-200"
-                    type="button">
+                    >
                     Login
                 </button>
 
@@ -80,6 +80,12 @@
                     <i class="fa-solid fa-mobile-screen"></i> Login with OTP
                 </button>
             </form>
+
+            @if(session('error'))
+                <p class="text-red-600 text-sm mb-3">
+                    {{ session('error') }}
+                </p>
+            @endif
 
             <p class="mt-6 text-center text-gray-600 text-sm">
                 New to SellerHub? <a href="{{route('register')}}" class="text-blue-600 font-bold">Register Now</a>
