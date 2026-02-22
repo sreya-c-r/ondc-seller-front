@@ -7,7 +7,7 @@
     <title>Seller Hub - Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <script>
         tailwind.config = {
             theme: {
@@ -48,7 +48,7 @@
                     </label>
                     <input
                         class="shadow-sm appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        id="email" name="email"  type="text" placeholder="seller@example.com">
+                        id="email" name="email" type="text" placeholder="seller@example.com">
                 </div>
 
                 <div class="mb-6">
@@ -67,8 +67,7 @@
                 </div>
 
                 <button type="submit"
-                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-200"
-                    >
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-200">
                     Login
                 </button>
 
@@ -84,6 +83,12 @@
             @if(session('error'))
                 <p class="text-red-600 text-sm mb-3">
                     {{ session('error') }}
+                </p>
+            @endif
+
+            @if(session('success'))
+                <p class="text-green-600 text-sm mb-3">
+                    {{ session('success') }}
                 </p>
             @endif
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 Route::post('/signup', [AuthController::class, 'register'])->name('signup.post');
 Route::post('/logins', [AuthController::class, 'login'])->name('login.post');
 Route::post('forgotpw', [AuthController::class, 'forgotpw'])->name('forgotpw.post');
+Route::post('/password.reset', [AuthController::class, 'passwordReset'])->name('password.reset');
 
 
 Route::get('/', function () {
@@ -105,4 +106,12 @@ Route::get('bank-details', function () {
 Route::get('profile-page', function () {
     return view('profile-page');
 })->name('profile-page');
+
+Route::get('ondc-policy', function () {
+    return view('ondc_policy');
+})->name('ondc-policy');
+
+Route::get('success-stories', function () {
+    return view('success_stories');
+})->name('success-stories');
 

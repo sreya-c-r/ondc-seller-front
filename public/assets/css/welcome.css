@@ -142,6 +142,9 @@ body {
     padding-top: 6rem;
     padding-bottom: 3rem;
     background: linear-gradient(to bottom, var(--blue-50), white);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 @media (min-width: 768px) {

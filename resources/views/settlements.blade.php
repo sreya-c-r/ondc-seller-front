@@ -12,24 +12,43 @@
         $settlements = [
             [
                 'ref_id' => 'TXN8839201',
+                'order_id' => 'ORD-2026-1024',
+                'product_id' => 'PRD-9921',
                 'date' => 'Jan 28, 2026',
-                'orders_count' => 15,
-                'amount' => '₹9,100',
+                'amount' => '₹4,550',
                 'status' => 'Paid',
                 'details' => [
-                    'total_sales' => '₹10,000',
-                    'commission' => '₹500',
-                    'shipping' => '₹400',
-                    'net_payout' => '₹9,100'
+                    'product_name' => 'Premium Wireless Headphones',
+                    'total_sales' => '₹5,000',
+                    'commission' => '₹250',
+                    'shipping' => '₹200',
+                    'net_payout' => '₹4,550'
+                ]
+            ],
+            [
+                'ref_id' => 'TXN8839201',
+                'order_id' => 'ORD-2026-1024',
+                'product_id' => 'PRD-9922',
+                'date' => 'Jan 28, 2026',
+                'amount' => '₹4,550',
+                'status' => 'Paid',
+                'details' => [
+                    'product_name' => 'Smart Watch Series 5',
+                    'total_sales' => '₹5,000',
+                    'commission' => '₹250',
+                    'shipping' => '₹200',
+                    'net_payout' => '₹4,550'
                 ]
             ],
             [
                 'ref_id' => 'TXN8839202',
+                'order_id' => 'ORD-2026-1025',
+                'product_id' => 'PRD-8810',
                 'date' => 'Feb 02, 2026',
-                'orders_count' => 8,
                 'amount' => '₹5,200',
                 'status' => 'Processing',
                 'details' => [
+                    'product_name' => 'Mechanical Keyboard RGB',
                     'total_sales' => '₹6,000',
                     'commission' => '₹400',
                     'shipping' => '₹400',
@@ -38,28 +57,17 @@
             ],
             [
                 'ref_id' => 'TXN8839199',
+                'order_id' => 'ORD-2026-1010',
+                'product_id' => 'PRD-7732',
                 'date' => 'Jan 15, 2026',
-                'orders_count' => 4,
                 'amount' => '₹2,300',
                 'status' => 'Failed',
                 'details' => [
+                    'product_name' => 'Ergonomic Office Chair',
                     'total_sales' => '₹3,000',
                     'commission' => '₹300',
                     'shipping' => '₹400',
                     'net_payout' => '₹2,300'
-                ]
-            ],
-            [
-                'ref_id' => 'TXN8839198',
-                'date' => 'Jan 10, 2026',
-                'orders_count' => 12,
-                'amount' => '₹7,500',
-                'status' => 'Paid',
-                'details' => [
-                    'total_sales' => '₹8,500',
-                    'commission' => '₹500',
-                    'shipping' => '₹500',
-                    'net_payout' => '₹7,500'
                 ]
             ],
         ];
@@ -87,6 +95,7 @@
             }
         }
     </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         .font-inter {
@@ -128,13 +137,13 @@
     </style>
 
     <div class="dashboard-container p-6 font-inter bg-gray-50 min-h-screen" x-data="{ 
-                showModal: false, 
-                selectedTxn: null,
-                openModal(txn) {
-                    this.selectedTxn = txn;
-                    this.showModal = true;
-                }
-            }">
+                            showModal: false, 
+                            selectedTxn: null,
+                            openModal(txn) {
+                                this.selectedTxn = txn;
+                                this.showModal = true;
+                            }
+                        }">
 
         <!-- Title Section -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
@@ -255,9 +264,10 @@
                         <thead>
                             <tr
                                 class="text-xs font-semibold text-gray-500 bg-gray-50 border-b border-gray-100 uppercase tracking-wider">
-                                <th class="p-3">Reference ID</th>
+                                <th class="p-3">Ref ID</th>
+                                <th class="p-3">Order ID</th>
+                                <th class="p-3">Product ID</th>
                                 <th class="p-3">Date</th>
-                                <th class="p-3">Orders</th>
                                 <th class="p-3">Amount</th>
                                 <th class="p-3">Status</th>
                                 <th class="p-3 text-right">Action</th>
@@ -268,8 +278,9 @@
                                 <tr class="group hover:bg-blue-50/50 transition-colors cursor-pointer"
                                     @click="openModal({{ json_encode($settlement) }})">
                                     <td class="p-3 font-medium text-gray-900">{{ $settlement['ref_id'] }}</td>
+                                    <td class="p-3 text-gray-500 font-mono text-xs">{{ $settlement['order_id'] }}</td>
+                                    <td class="p-3 text-gray-500 font-mono text-xs">{{ $settlement['product_id'] }}</td>
                                     <td class="p-3 text-gray-500">{{ $settlement['date'] }}</td>
-                                    <td class="p-3 text-gray-500">{{ $settlement['orders_count'] }} Orders</td>
                                     <td class="p-3 font-semibold text-gray-900">{{ $settlement['amount'] }}</td>
                                     <td class="p-3">
                                         @if($settlement['status'] === 'Paid')
@@ -290,10 +301,16 @@
                                         @endif
                                     </td>
                                     <td class="p-3 text-right">
-                                        <button class="text-gray-400 hover:text-primary transition-colors p-1"
-                                            title="Download Receipt" @click.stop>
-                                            <i class="mdi mdi-download"></i>
-                                        </button>
+                                        <div class="flex items-center justify-end gap-2">
+                                            <button class="text-gray-400 hover:text-primary transition-colors p-1"
+                                                title="View Details" @click.stop="openModal({{ json_encode($settlement) }})">
+                                                <i class="mdi mdi-eye"></i>
+                                            </button>
+                                            <button class="text-gray-400 hover:text-primary transition-colors p-1"
+                                                title="Download Receipt" @click.stop>
+                                                <i class="mdi mdi-download"></i>
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
@@ -341,9 +358,20 @@
                 </div>
 
                 <div class="p-6 space-y-4" x-if="selectedTxn">
-                    <div class="flex justify-between items-center pb-4 border-b border-gray-50">
-                        <span class="text-sm text-gray-500">Reference ID</span>
-                        <span class="font-mono text-sm font-medium text-gray-900" x-text="selectedTxn?.ref_id"></span>
+                    <div class="space-y-2 pb-4 border-b border-gray-50">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Product Name</span>
+                            <span class="text-sm font-bold text-primary text-right"
+                                x-text="selectedTxn?.details.product_name"></span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Order ID</span>
+                            <span class="font-mono text-xs font-medium text-gray-900" x-text="selectedTxn?.order_id"></span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Reference ID</span>
+                            <span class="font-mono text-xs font-medium text-gray-900" x-text="selectedTxn?.ref_id"></span>
+                        </div>
                     </div>
 
                     <div class="space-y-3">
