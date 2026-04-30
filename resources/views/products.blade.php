@@ -172,10 +172,10 @@
 
             <!-- Right: Action Buttons -->
             <div class="flex gap-3 w-full lg:w-auto">
-                <button
+                <!-- <button
                     class="flex-1 lg:flex-none border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-lg text-sm font-medium transition flex items-center justify-center gap-2">
                     <i class="mdi mdi-upload"></i> Bulk Upload
-                </button>
+                </button> -->
                 <button
                     class="flex-1 lg:flex-none bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-lg text-sm font-medium transition flex items-center justify-center gap-2">
                     <i class="mdi mdi-plus"></i> Add New Product

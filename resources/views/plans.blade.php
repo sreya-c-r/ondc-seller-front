@@ -63,127 +63,70 @@
             </p>
         </div>
 
+        @if(isset($error))
+            <div class="max-w-7xl mx-auto mb-8 bg-red-50 border-l-4 border-red-400 p-4">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <i class="fa-solid fa-circle-exclamation text-red-400"></i>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-red-700">
+                            {{ $error }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        @endif
+
         <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 items-start">
+            @forelse($plans ?? [] as $plan)
+                @php
+                    $isPopular = ($plan['name'] ?? '') === 'Growth';
+                    $features = $plan['features'] ?? [];
+                    if (is_string($features)) {
+                        $features = json_decode($features, true) ?? [];
+                    }
+                @endphp
 
-            <div class="plan-card bg-white rounded-2xl shadow-lg border border-gray-100 p-8 relative">
-                <h3 class="text-xl font-bold text-gray-900">Starter</h3>
-                <p class="text-gray-500 text-sm mt-2">Perfect for new sellers.</p>
+                <div class="plan-card bg-white rounded-2xl shadow-lg border {{ $isPopular ? 'border-2 border-blue-500 transform md:-translate-y-4 shadow-xl' : 'border-gray-100' }} p-8 relative">
+                    
+                    @if($isPopular)
+                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                                Most Popular
+                            </span>
+                        </div>
+                    @endif
 
-                <div class="my-6">
-                    <span class="text-4xl font-extrabold text-gray-900">₹0</span>
-                    <span class="text-gray-500 font-medium">/ month</span>
+                    <h3 class="text-xl font-bold text-gray-900">{{ $plan['name'] ?? 'Plan' }}</h3>
+                    <p class="text-gray-500 text-sm mt-2">{{ $plan['description'] ?? '' }}</p>
+
+                    <div class="my-6">
+                        <span class="text-4xl font-extrabold text-gray-900">₹{{ $plan['price'] ?? '0' }}</span>
+                        <span class="text-gray-500 font-medium">/ {{ $plan['duration'] ?? 'month' }}</span>
+                    </div>
+
+                    <a href="{{ route('plan-subscribe', ['plan_id' => $plan['id'] ?? '']) }}"
+                        class="w-full text-center block {{ $isPopular ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg btn-hover-effect' : 'bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200' }} font-bold py-3 px-4 rounded-lg transition">
+                        {{ $isPopular ? 'Choose ' . $plan['name'] : 'Get Started' }}
+                    </a>
+
+                    <ul class="mt-8 space-y-4 text-sm text-gray-600">
+                        @foreach($features as $feature)
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check {{ $isPopular ? 'text-blue-600' : 'text-green-500' }} mt-0.5"></i>
+                                <span>{{ $feature }}</span>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
-
-                <a href="{{ route('plan-subscribe') }}"
-                    class="w-full text-center block bg-blue-50 text-blue-700 font-bold py-3 px-4 rounded-lg hover:bg-blue-100 transition border border-blue-200">
-                    Get Started
-                </a>
-
-                <ul class="mt-8 space-y-4 text-sm text-gray-600">
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
-                        <span>5% Commission per Order</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
-                        <span>List up to 50 Products</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
-                        <span>Basic Analytics</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
-                        <span>Email Support</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div
-                class="plan-card bg-white rounded-2xl shadow-xl border-2 border-blue-500 p-8 relative transform md:-translate-y-4">
-
-                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <span
-                        class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                        Most Popular
-                    </span>
-                </div>
-
-                <h3 class="text-xl font-bold text-gray-900">Growth</h3>
-                <p class="text-gray-500 text-sm mt-2">For growing businesses.</p>
-
-                <div class="my-6">
-                    <span class="text-4xl font-extrabold text-gray-900">₹499</span>
-                    <span class="text-gray-500 font-medium">/ month</span>
-                </div>
-
-                <a href="{{ route('plan-subscribe') }}"
-                    class="w-full text-center block bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition shadow-lg btn-hover-effect">
-                    Choose Growth
-                </a>
-
-                <ul class="mt-8 space-y-4 text-sm text-gray-600">
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-blue-600 mt-0.5"></i>
-                        <span class="font-bold text-gray-900">2% Commission per Order</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-blue-600 mt-0.5"></i>
-                        <span>List up to 500 Products</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-blue-600 mt-0.5"></i>
-                        <span>Advanced Analytics</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-blue-600 mt-0.5"></i>
-                        <span>Priority Support</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-blue-600 mt-0.5"></i>
-                        <span>ONDC Boost Visibility</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="plan-card bg-white rounded-2xl shadow-lg border border-gray-100 p-8 relative">
-                <h3 class="text-xl font-bold text-gray-900">Pro Unlimited</h3>
-                <p class="text-gray-500 text-sm mt-2">Maximum power & scale.</p>
-
-                <div class="my-6">
-                    <span class="text-4xl font-extrabold text-gray-900">₹999</span>
-                    <span class="text-gray-500 font-medium">/ month</span>
-                </div>
-
-                <a href="{{ route('plan-subscribe') }}"
-                    class="w-full text-center block bg-blue-50 text-blue-700 font-bold py-3 px-4 rounded-lg hover:bg-blue-100 transition border border-blue-200">
-                    Choose Pro
-                </a>
-
-                <ul class="mt-8 space-y-4 text-sm text-gray-600">
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
-                        <span class="font-bold text-gray-900">0% Commission</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
-                        <span>Unlimited Products</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
-                        <span>Real-time Reports</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
-                        <span>Dedicated Account Manager</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
-                        <span>API Access</span>
-                    </li>
-                </ul>
-            </div>
-
+            @empty
+                @if(!isset($error))
+                    <div class="col-span-3 text-center py-12">
+                        <p class="text-gray-500">No plans available at the moment.</p>
+                    </div>
+                @endif
+            @endforelse
         </div>
         <div class="max-w-3xl mx-auto mt-20 text-center">
             <p class="text-gray-500 text-sm">

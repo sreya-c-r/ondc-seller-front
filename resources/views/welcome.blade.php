@@ -29,6 +29,8 @@
 
 <body>
 
+
+
     <nav class="navbar">
         <div class="container">
             <div class="nav-container">
@@ -38,13 +40,13 @@
                 </div>
 
                 <div class="nav-links">
-                    <a href="{{route('login')}}" class="nav-link">Login</a>
-                    <a href="#" class="nav-link">Cart</a>
-                    <a href="{{ route('plans') }}" class="btn-start">Start Selling</a>
+                    <a href="{{route('login')}}" class="btn-start">Login</a>
                 </div>
             </div>
         </div>
     </nav>
+
+
 
     <section class="hero-section">
         <div class="container">
@@ -114,6 +116,8 @@
         </div>
     </section>
 
+
+
     <!-- Plans Section -->
     <div id="plans-section"
         class="pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50 to-white min-h-screen">
@@ -128,124 +132,51 @@
 
         <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 items-start">
 
-            <div class="plan-card bg-white rounded-2xl shadow-lg border border-gray-100 p-8 relative">
-                <h3 class="text-xl font-bold text-gray-900">Starter</h3>
-                <p class="text-gray-500 text-sm mt-2">Perfect for new sellers.</p>
+            @foreach ($plans as $plan)
 
-                <div class="my-6">
-                    <span class="text-4xl font-extrabold text-gray-900">₹0</span>
-                    <span class="text-gray-500 font-medium">/ month</span>
+            
+
+                <div class="plan-card bg-white rounded-2xl shadow-lg border border-gray-100 p-8 relative">
+                    <h3 class="text-xl font-bold text-gray-900">{{ $plan['name'] }}</h3>
+                    <p class="text-gray-500 text-sm mt-2">{{ $plan['description'] }}</p>
+
+                    <div class="my-6">
+                        <span class="text-4xl font-extrabold text-gray-900">{{ $plan['price'] }}</span>
+                        <span class="text-gray-500 font-medium">/ month</span>
+                    </div>
+
+                    <a href="{{ route('login') }}"
+                        class="w-full text-center block bg-blue-50 text-blue-700 font-bold py-3 px-4 rounded-lg hover:bg-blue-100 transition border border-blue-200">
+                        Get Started
+                    </a>
+
+                    <ul class="mt-8 space-y-4 text-sm text-gray-600">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
+                            <span>5% Commission per Order</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
+                            <span>List up to {{ $plan['product_count_limit'] }} Products</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
+                            <span>Basic Analytics</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
+                            <span>Email Support</span>
+                        </li>
+                    </ul>
                 </div>
 
-                <a href="{{ route('login') }}"
-                    class="w-full text-center block bg-blue-50 text-blue-700 font-bold py-3 px-4 rounded-lg hover:bg-blue-100 transition border border-blue-200">
-                    Get Started
-                </a>
 
-                <ul class="mt-8 space-y-4 text-sm text-gray-600">
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
-                        <span>5% Commission per Order</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
-                        <span>List up to 50 Products</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
-                        <span>Basic Analytics</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
-                        <span>Email Support</span>
-                    </li>
-                </ul>
-            </div>
+        @endforeach
 
-            <div
-                class="plan-card bg-white rounded-2xl shadow-xl border-2 border-blue-500 p-8 relative transform md:-translate-y-4">
 
-                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <span
-                        class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                        Most Popular
-                    </span>
-                </div>
+            
 
-                <h3 class="text-xl font-bold text-gray-900">Growth</h3>
-                <p class="text-gray-500 text-sm mt-2">For growing businesses.</p>
-
-                <div class="my-6">
-                    <span class="text-4xl font-extrabold text-gray-900">₹499</span>
-                    <span class="text-gray-500 font-medium">/ month</span>
-                </div>
-
-                <a href="{{ route('login') }}"
-                    class="w-full text-center block bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition shadow-lg btn-hover-effect">
-                    Choose Growth
-                </a>
-
-                <ul class="mt-8 space-y-4 text-sm text-gray-600">
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-blue-600 mt-0.5"></i>
-                        <span class="font-bold text-gray-900">2% Commission per Order</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-blue-600 mt-0.5"></i>
-                        <span>List up to 500 Products</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-blue-600 mt-0.5"></i>
-                        <span>Advanced Analytics</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-blue-600 mt-0.5"></i>
-                        <span>Priority Support</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-blue-600 mt-0.5"></i>
-                        <span>ONDC Boost Visibility</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="plan-card bg-white rounded-2xl shadow-lg border border-gray-100 p-8 relative">
-                <h3 class="text-xl font-bold text-gray-900">Pro Unlimited</h3>
-                <p class="text-gray-500 text-sm mt-2">Maximum power & scale.</p>
-
-                <div class="my-6">
-                    <span class="text-4xl font-extrabold text-gray-900">₹999</span>
-                    <span class="text-gray-500 font-medium">/ month</span>
-                </div>
-
-                <a href="{{ route('login') }}"
-                    class="w-full text-center block bg-blue-50 text-blue-700 font-bold py-3 px-4 rounded-lg hover:bg-blue-100 transition border border-blue-200">
-                    Choose Pro
-                </a>
-
-                <ul class="mt-8 space-y-4 text-sm text-gray-600">
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
-                        <span class="font-bold text-gray-900">0% Commission</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
-                        <span>Unlimited Products</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
-                        <span>Real-time Reports</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
-                        <span>Dedicated Account Manager</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-500 mt-0.5"></i>
-                        <span>API Access</span>
-                    </li>
-                </ul>
-            </div>
+            
 
         </div>
         <div class="max-w-3xl mx-auto mt-20 text-center">

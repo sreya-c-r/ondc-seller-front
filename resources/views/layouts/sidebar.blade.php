@@ -131,7 +131,7 @@
         </ul>
       </div>
     </li>
-
+    <!-- 
     <li class="nav-item {{ Route::is('grievances') ? 'active' : '' }}">
       <a class="nav-link" data-bs-toggle="collapse" href="{{ route('grievances') }}" aria-expanded="false"
         aria-controls="instruments">
@@ -140,7 +140,7 @@
         <i class="menu-arrow"></i>
       </a>
      
-    </li>
+    </li> -->
 
 
     <li class="nav-item {{ Route::is('manage-users') ? 'active' : '' }}">

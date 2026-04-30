@@ -1,7 +1,9 @@
 <?php
 
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PlanController;
 
 
 Route::post('/signup', [AuthController::class, 'register'])->name('signup.post');
@@ -11,8 +13,24 @@ Route::post('/password.reset', [AuthController::class, 'passwordReset'])->name('
 
 
 Route::get('/', function () {
-    return view('welcome');
+    $client = new Client();
+    $response = $client->get('http://127.0.0.1:8001/api/getallplans', [
+        'headers' => [
+            'Accept' => 'application/json',
+        ],
+    ]);
+
+
+    $plans = json_decode($response->getBody(), true);
+    return view('welcome', compact('plans'));
 });
+
+
+Route::get('/hello', function () {
+
+    $hi = "Ashwin can code without chatgpt.....";
+    return view('hello', compact('hi'));
+})->name('hello');  
 
 Route::get('/login', function () {
     return view('login');
@@ -23,6 +41,7 @@ Route::get('/login', function () {
 // })->name('login.submit');
 
 
+
 Route::get('/register', function () {
     return view('register');
 })->name('register');
@@ -31,9 +50,7 @@ Route::get('/seller-address', function () {
     return view('seller-address');
 })->name('seller-address');
 
-Route::get('/plans', function () {
-    return view('plans');
-})->name('plans');
+Route::get('/plans', [PlanController::class, 'index'])->name('plans');
 
 Route::get('/forgot-pw', function () {
     return view('forgot-pw');
@@ -46,14 +63,6 @@ Route::get('/reset-pw', function () {
 Route::get('/logout', function () {
     return view('logout');
 })->name('logout');
-
-Route::get('/plans', function () {
-    return view('plans');
-})->name('plans');
-
-Route::get('/seller-address', function () {
-    return view('seller-address');
-})->name('seller-address');
 
 Route::get('plan-subscribe', function () {
     return view('plan-subscribe');

@@ -230,7 +230,7 @@
             </div>
 
             {{-- Danger / Cancel Section --}}
-            <div class="bg-red-50 rounded-2xl border border-red-100 p-6">
+            <!-- <div class="bg-red-50 rounded-2xl border border-red-100 p-6">
                 <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div class="flex items-start gap-4">
                         <div class="p-3 bg-red-100 text-red-600 rounded-xl hidden sm:block">
@@ -251,7 +251,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>
